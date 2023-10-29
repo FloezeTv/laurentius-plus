@@ -1,0 +1,39 @@
+name: Rebuild site
+
+on:
+  - push
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout render
+        uses: actions/checkout@v4
+        with:
+          ref: 'render'
+      - name: Checkout plans
+        uses: actions/checkout@v4
+        with:
+          ref: 'plans'
+          path: 'plans'
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: Install and build
+        run: |
+          npm ci
+          cp plans/plans.json ./plans.json
+          npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: dist
+      - name: Deploy
+        uses: actions/deploy-pages@v2
+
