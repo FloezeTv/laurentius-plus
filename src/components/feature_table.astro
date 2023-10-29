@@ -1,0 +1,42 @@
+---
+import type Plans from "../types/plans.ts";
+import type { Plan } from "../types/plans.ts";
+
+interface Props {
+	plans: Plans;
+}
+
+const { features, plans } = Astro.props.plans;
+
+const has_feature = (plan: Plan, feature: string): boolean =>
+	plan.features.includes(feature) ||
+	(!!plan.extends && has_feature(plans[plan.extends], feature));
+---
+
+<table border="1">
+	<thead>
+		<tr>
+			<th><!-- Empty (top-left square of matrix) --></th>
+			{Object.entries(plans).map(([_, p]) => <th>{p.name}</th>)}
+		</tr>
+	</thead>
+	<tbody>
+		{
+			Object.entries(features).map(([id, name]) => (
+				<tr>
+					<th>{name}</th>
+					{Object.values(plans).map((plan) =>
+						has_feature(plan, id) ? <td>✅</td> : <td>❌</td>,
+					)}
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+{import.meta.env.DEV && <>
+	<!-- DEBUG: display passed prop -->
+	<pre>{JSON.stringify(Astro.props.plans, null, 4)}</pre>
+	<br />
+	<!-- -->
+</>}

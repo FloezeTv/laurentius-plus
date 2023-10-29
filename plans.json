@@ -1,0 +1,36 @@
+{
+	"features": {
+		"f1": "Basic Features",
+		"f2": "Cool feature",
+		"f3": "Other cool feature",
+		"f4": "Cooler Feature",
+		"f5": "Coolest of all cool features"
+	},
+	"plans": {
+		"p1": {
+			"name": "Basic",
+			"price": 19.99,
+			"features": [
+				"f1"
+			]
+		},
+		"p2": {
+			"name": "Plus",
+			"extends": "p1",
+			"price": 29.99,
+			"features": [
+				"f2",
+				"f3",
+				"f4"
+			]
+		},
+		"p3": {
+			"name": "Premium",
+			"extends": "p2",
+			"price": 39.99,
+			"features": [
+				"f5"
+			]
+		}
+	}
+}
