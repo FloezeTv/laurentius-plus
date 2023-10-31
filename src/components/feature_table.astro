@@ -1,6 +1,11 @@
 ---
 import type Plans from "../types/plans.ts";
 import type { Plan } from "../types/plans.ts";
+import Icon from '../components/icon.astro';
+import Check from 'heroicons/24/solid/check.svg?raw';
+import Cross from 'heroicons/24/solid/x-mark.svg?raw';
+
+const ICON_SIZE = 24;
 
 interface Props {
 	plans: Plans;
@@ -13,20 +18,31 @@ const has_feature = (plan: Plan, feature: string): boolean =>
 	(!!plan.extends && has_feature(plans[plan.extends], feature));
 ---
 
-<table border="1">
+<table class="m-auto w-full">
+	<colgroup>
+		<col class="w-1/4"/>
+		<col class="w-1/4"/>
+		<col class="w-1/4"/>
+		<col class="w-1/4"/>
+	</colgroup>
 	<thead>
 		<tr>
-			<th><!-- Empty (top-left square of matrix) --></th>
-			{Object.entries(plans).map(([_, p]) => <th>{p.name}</th>)}
+			<th class="sticky left-0 bg-white"><!-- Empty (top-left square of matrix) --></th>
+			{Object.entries(plans).map(([_, p]) => <th class="font-medium">{p.name}</th>)}
 		</tr>
 	</thead>
 	<tbody>
 		{
 			Object.entries(features).map(([id, name]) => (
-				<tr>
-					<th>{name}</th>
-					{Object.values(plans).map((plan) =>
-						has_feature(plan, id) ? <td>✅</td> : <td>❌</td>,
+				<tr class="border-b border-b-slate-200">
+					<th class="sticky left-0 py-3 text-left font-light bg-white bg-clip-padding">{name}</th>
+					{Object.values(plans).map((plan) => 
+						<td>
+							{has_feature(plan, id) ? 
+								<Icon src={Check} class="text-sky-600 m-auto" width={ICON_SIZE} height={ICON_SIZE} /> :
+								<Icon src={Cross} class="text-slate-300 m-auto" width={ICON_SIZE} height={ICON_SIZE} />
+							}
+						</td>
 					)}
 				</tr>
 			))
@@ -34,7 +50,7 @@ const has_feature = (plan: Plan, feature: string): boolean =>
 	</tbody>
 </table>
 
-{import.meta.env.DEV && <>
+{import.meta.env.DEV && false && <>
 	<!-- DEBUG: display passed prop -->
 	<pre>{JSON.stringify(Astro.props.plans, null, 4)}</pre>
 	<br />

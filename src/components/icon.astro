@@ -1,0 +1,25 @@
+---
+export interface Props {
+	src: string;
+	class?: string;
+	width?: number;
+	height?: number;
+}
+
+const get_param_from_prop = (
+	name: string,
+	quote: boolean = true,
+	space_before: boolean = true,
+) =>
+	(Astro.props as Record<string, any>)[name] !== undefined
+		? `${space_before ? " " : ""}${name}=${quote ? '"' : ""}${
+				(Astro.props as Record<string, any>)[name]
+		  }${quote ? '"' : ""}`
+		: "";
+const attributes =
+	get_param_from_prop("class") +
+	get_param_from_prop("width", false) +
+	get_param_from_prop("height", false);
+---
+
+<Fragment set:html={Astro.props.src.replace(/^<svg /, `<svg${attributes} `)} />

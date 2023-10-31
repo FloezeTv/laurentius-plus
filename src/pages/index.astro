@@ -13,6 +13,13 @@ import plans from "../../plans.json";
 		<title>Laurentius Plus</title>
 	</head>
 	<body>
-		<FeatureTable plans={plans} />
+		<div class="min-w-full min-h-screen flex items-center justify-center">
+			<div
+				style={{ width: "min(max(800px, 70%), 100%)" }}
+				class="overflow-x-scroll"
+			>
+				<FeatureTable plans={plans} />
+			</div>
+		</div>
 	</body>
 </html>
