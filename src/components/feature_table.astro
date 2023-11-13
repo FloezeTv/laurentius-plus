@@ -2,6 +2,7 @@
 import type Plans from "../types/plans.ts";
 import type { Plan } from "../types/plans.ts";
 import Icon from '../components/icon.astro';
+import Subscribe from '../components/subscribe.astro';
 import Check from 'heroicons/24/solid/check.svg?raw';
 import Cross from 'heroicons/24/solid/x-mark.svg?raw';
 
@@ -55,6 +56,16 @@ const has_feature = (plan: Plan, feature: string): boolean =>
 			))
 		}
 	</tbody>
+	<tfoot>
+		<tr>
+			<th class="sticky left-0 bg-white"><!-- Empty (bottom-left square of matrix) --></th>
+			{Object.entries(plans).map(([_, p]) =>
+				<th>
+					<Subscribe to={p.name}/>
+				</th>
+			)}
+		</tr>
+	</tfoot>
 </table>
 
 {import.meta.env.DEV && false && <>

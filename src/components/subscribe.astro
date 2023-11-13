@@ -1,0 +1,13 @@
+---
+export interface Props {
+	to?: string;
+}
+
+const to = Astro.props.to !== undefined ? ` to ${Astro.props.to}` : "";
+---
+
+<button
+	class="btn bg-blue-700 hover:bg-blue-600 text-white font-bold rounded w-full py-4"
+>
+	Subscribe{to}
+</button>
