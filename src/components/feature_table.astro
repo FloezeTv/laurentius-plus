@@ -67,10 +67,3 @@ const has_feature = (plan: Plan, feature: string): boolean =>
 		</tr>
 	</tfoot>
 </table>
-
-{import.meta.env.DEV && false && <>
-	<!-- DEBUG: display passed prop -->
-	<pre>{JSON.stringify(Astro.props.plans, null, 4)}</pre>
-	<br />
-	<!-- -->
-</>}
