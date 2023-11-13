@@ -28,7 +28,14 @@ const has_feature = (plan: Plan, feature: string): boolean =>
 	<thead>
 		<tr>
 			<th class="sticky left-0 bg-white"><!-- Empty (top-left square of matrix) --></th>
-			{Object.entries(plans).map(([_, p]) => <th class="font-medium">{p.name}</th>)}
+			{Object.entries(plans).map(([_, p]) =>
+				<th>
+					<div class="flex flex-col">
+						<div class="font-normal text-lg">{p.name}</div>
+						<div class="font-bold text-3xl">{p.price} €</div>
+					</div>
+				</th>
+			)}
 		</tr>
 	</thead>
 	<tbody>
