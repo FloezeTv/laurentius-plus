@@ -17,14 +17,15 @@ const { features, plans } = Astro.props.plans;
 const has_feature = (plan: Plan, feature: string): boolean =>
 	plan.features.includes(feature) ||
 	(!!plan.extends && has_feature(plans[plan.extends], feature));
+
+const COLUMNS = Object.keys(plans).length + 1;
+const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 ---
 
 <table class="m-auto w-full">
 	<colgroup>
-		<col class="w-1/4"/>
-		<col class="w-1/4"/>
-		<col class="w-1/4"/>
-		<col class="w-1/4"/>
+		<col style={{width: COLUMN_WIDTH}} />
+		{Object.keys(plans).map(_ => <col style={{width: COLUMN_WIDTH}} />)}
 	</colgroup>
 	<thead>
 		<tr>
