@@ -57,13 +57,13 @@ const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 			))
 		}
 	</tbody>
-	<tfoot>
+	<tfoot class="h-full">
 		<tr>
-			<th class="sticky left-0 bg-white"><!-- Empty (bottom-left square of matrix) --></th>
+			<th class="sticky left-0 bg-white h-full"><!-- Empty (bottom-left square of matrix) --></th>
 			{Object.entries(plans).map(([_, p]) =>
-				<th>
-					<Subscribe to={p.name}/>
-				</th>
+				<td class="h-full p-1">
+					<Subscribe to={p.name} />
+				</td>
 			)}
 		</tr>
 	</tfoot>
