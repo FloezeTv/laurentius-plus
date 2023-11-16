@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+	.text {
+		@apply text-black dark:text-white;
+	}
+
+	.background {
+		@apply bg-white dark:bg-slate-800 text;
+	}
+}

@@ -29,7 +29,7 @@ const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 	</colgroup>
 	<thead>
 		<tr>
-			<th class="sticky left-0 bg-white"><!-- Empty (top-left square of matrix) --></th>
+			<th class="sticky left-0 background"><!-- Empty (top-left square of matrix) --></th>
 			{Object.entries(plans).map(([_, p]) =>
 				<th>
 					<div class="flex flex-col">
@@ -44,7 +44,7 @@ const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 		{
 			Object.entries(features).map(([id, name]) => (
 				<tr class="border-b border-b-slate-200">
-					<th class="sticky left-0 py-3 text-left font-light bg-white bg-clip-padding">{name}</th>
+					<th class="sticky left-0 py-3 text-left font-light background bg-clip-padding">{name}</th>
 					{Object.values(plans).map((plan) => 
 						<td>
 							{has_feature(plan, id) ? 
@@ -59,7 +59,7 @@ const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 	</tbody>
 	<tfoot class="h-full">
 		<tr>
-			<th class="sticky left-0 bg-white h-full"><!-- Empty (bottom-left square of matrix) --></th>
+			<th class="sticky left-0 background h-full"><!-- Empty (bottom-left square of matrix) --></th>
 			{Object.entries(plans).map(([_, p]) =>
 				<td class="h-full p-1">
 					<Subscribe to={p.name} />
