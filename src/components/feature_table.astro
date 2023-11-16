@@ -34,7 +34,7 @@ const COLUMN_WIDTH = `${(1/(COLUMNS)) * 100}%`;
 				<th>
 					<div class="flex flex-col">
 						<div class="font-normal text-lg">{p.name}</div>
-						<div class="font-bold text-3xl">{p.price} €</div>
+						<div class="font-bold text-3xl">{p.price.toFixed(2)} €</div>
 					</div>
 				</th>
 			)}
