@@ -1,4 +1,62 @@
 {
-	"features": {},
-	"plans": {}
+	"features": {
+		"member": "Mitgliedschaft",
+		"support": "Stamm unterstützen",
+		"food_first": "Beim Essen vorne anstellen",
+		"package_transport": "Gepäcktransport zum Lager",
+		"cot": "Feldbett im Zelt",
+		"no-dish-wash": "Kein Spüldienst",
+		"floor": "Zelte haben einen Boden",
+		"stream": "Livestream der Lager"
+	},
+	"plans": {
+		"basic": {
+			"name": "Basic",
+			"price": 39.50,
+			"features": [
+				"member"
+			]
+		},
+		"plus": {
+			"name": "Plus",
+			"extends": "basic",
+			"price": 49.99,
+			"features": [
+				"support",
+				"food_first",
+				"package_transport"
+			]
+		},
+		"premium": {
+			"name": "Premium",
+			"extends": "plus",
+			"price": 69.99,
+			"features": [
+				"cot"
+			]
+		},
+		"premium plus": {
+			"name": "Premium Plus",
+			"extends": "premium",
+			"price": 99.99,
+			"features": [
+				"no-dish-wash",
+				"floor"
+			]
+		},
+		"minus": {
+			"name": "Minus",
+			"price": 29.50,
+			"features": [
+				"support"
+			]
+		},
+		"@home": {
+			"name": "@Home",
+			"price": 15.99,
+			"features": [
+				"stream"
+			]
+		}
+	}
 }
