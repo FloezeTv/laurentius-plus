@@ -1,7 +1,13 @@
 ---
 import FeatureTable from "../components/feature_table.astro";
+import Footer from "../components/footer.astro";
+
+import type { Config } from "../types/config.ts";
 
 import plans from "../../plans.json";
+import __config from "../../config.json";
+
+const config : Config = __config;
 
 import '../global.css'
 ---
@@ -15,13 +21,14 @@ import '../global.css'
 		<title>Laurentius Plus</title>
 	</head>
 	<body>
-		<div class="min-w-full min-h-screen flex items-center justify-center background">
+		<div class="min-w-full min-h-screen flex flex-col items-center justify-center background">
 			<div
 				style={{ width: "min(max(800px, 70%), 100%)" }}
-				class="overflow-x-scroll"
+				class="overflow-x-scroll my-auto"
 			>
 				<FeatureTable plans={plans} />
 			</div>
+			<Footer source={config.source} imprint={config.imprint} class="self-end" />
 		</div>
 	</body>
 </html>
